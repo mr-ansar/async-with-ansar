@@ -26,4 +26,4 @@ ar.bind(device_poll)
 default_input = DeviceControl()
 
 if __name__ == '__main__':
-	ar.create_object(device_poll, compiled_input=default_input)
+	ar.create_object(device_poll, factory_input=default_input)
