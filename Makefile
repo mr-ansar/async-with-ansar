@@ -21,6 +21,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# This repo needs the following;
+# - python3 -m venv .env
+# - source .env/bin/activate
+# - pip install pyinstaller
+# - pip install ansar-create
+# - make (runs the final version)
+
 SCRIPT_1 = db-query-interrupt db-query-stateless device-poll network-request-server query-request-poll-concurrent
 SCRIPT_2 = db-query device_if hello-world query-request-poll-3-way query-request-poll
 
@@ -30,7 +37,7 @@ BUILD := $(EXECUTABLES:%=dist/%)
 SPEC := $(EXECUTABLES:%=%.spec)
 
 # The default target is to build.
-all: build
+all: run
 
 # Turn a python script into an executable.
 dist/% : %.py
@@ -41,6 +48,9 @@ clean::
 
 # All the executables.
 build: $(BUILD)
+
+run: build
+	PATH="${PWD}/dist:${PATH}" dist/query-request-poll-3-way --debug-level=DEBUG
 
 clean::
 	-rm -f $(SPEC)
