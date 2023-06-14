@@ -26,7 +26,11 @@
 # - source .env/bin/activate
 # - pip install pyinstaller
 # - pip install ansar-create
-# - make (runs the final version)
+# - make build
+#
+# The repo is ready. Running a make at this point executes the final version
+# of the demonstration.
+# - make
 
 SCRIPT_1 = db-query-interrupt db-query-stateless device-poll network-request-server query-request-poll-concurrent
 SCRIPT_2 = db-query device_if hello-world query-request-poll-3-way query-request-poll
